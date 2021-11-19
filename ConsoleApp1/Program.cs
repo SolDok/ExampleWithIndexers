@@ -13,10 +13,9 @@
 
         Console.WriteLine($"Имя: {Tom.Name}, Номер: {Tom.NumOnField}");
 
-        for (int i = 0; i < FbTeam1.getLength(); i++)
+        for (int i = 0; i < FbTeam1.Count; i++)
         {
-            Console.WriteLine(i);
-            //Console.WriteLine($"Имя: {player.Name}, Номер: {player.NumOnField}");
+            Console.WriteLine($"Имя: {FbTeam1[i].Name}, Номер: {FbTeam1[i].NumOnField}");
         }
     }
 }
@@ -30,10 +29,13 @@ class FbPlayer
 class Team
 {
     FbPlayer[] data;
-    internal int size;
+    private int count;
+    public int Count
+    {
+        get { return count; }
+    }
     public Team (int SizeOfArray)
     {
-        this.size = SizeOfArray;
         data = new FbPlayer[SizeOfArray];
         //FbPlayer as type for array, not new objects
     }
@@ -46,8 +48,8 @@ class Team
         set 
         {
             data[Index] = value;
+            this.count++;
         }
     }
-    public int getLength() => this.size;
     //Create Football Team with array of objects(FbPlayer) and indexers for this array
 }
