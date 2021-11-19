@@ -1,6 +1,6 @@
 ﻿class Program
 {
-    static void main (string[] args)
+    static void Main(string[] args)
     {
         Team FbTeam1 = new Team(5);//Create Football team for 5 players
         FbTeam1[0] = new FbPlayer { Name = "Tom", NumOnField = 11 };
@@ -10,7 +10,14 @@
         FbPlayer Tom = FbTeam1[0];
         FbPlayer Bob = FbTeam1[1];
         FbPlayer Sam = FbTeam1[2];
+
         Console.WriteLine($"Имя: {Tom.Name}, Номер: {Tom.NumOnField}");
+
+        for (int i = 0; i < FbTeam1.getLength(); i++)
+        {
+            Console.WriteLine(i);
+            //Console.WriteLine($"Имя: {player.Name}, Номер: {player.NumOnField}");
+        }
     }
 }
 
@@ -23,8 +30,10 @@ class FbPlayer
 class Team
 {
     FbPlayer[] data;
+    internal int size;
     public Team (int SizeOfArray)
     {
+        this.size = SizeOfArray;
         data = new FbPlayer[SizeOfArray];
         //FbPlayer as type for array, not new objects
     }
@@ -39,5 +48,6 @@ class Team
             data[Index] = value;
         }
     }
+    public int getLength() => this.size;
     //Create Football Team with array of objects(FbPlayer) and indexers for this array
 }
